@@ -18,19 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/products")
 public class ProductController {
 
-
     private final ProductService productService;
-
-    @PostMapping
-    public ResponseEntity<ProductDTO> save(
-            @RequestBody
-            @NotNull(message = "Input must be not null")
-            @Valid final ProductDTO productDTO
-    ) {
-        log.info("ProductDTo, Controller; save the products");
-        return ResponseEntity.ok(this.productService.save(productDTO));
-
-    }
 
     @GetMapping
     public ResponseEntity<DTOCollectionResponse<ProductDTO>> findAll() {
@@ -47,14 +35,6 @@ public class ProductController {
         return ResponseEntity.ok(this.productService.findById(Integer.parseInt(productId)));
     }
 
-    @PutMapping
-    public ResponseEntity<ProductDTO> update(
-            @RequestBody
-            @NotNull(message = "Input must be not null")
-            @Valid ProductDTO productDTO)
-    {
-        return ResponseEntity.ok(this.productService.update(productDTO));
-    }
 
     @PutMapping("/productId")
     public ResponseEntity<ProductDTO> update(

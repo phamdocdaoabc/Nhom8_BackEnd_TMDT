@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.*;
 public class VerificationTokenController {
     private final VerificationTokenService verificationTokenService;
 
-    @GetMapping
-    public ResponseEntity<ResponseCollectionDTO<VerificationDTO>> findAll() {
-        log.info("*** VerificationTokenDto List, controller; fetch all verificationTokens *");
-        return ResponseEntity.ok(new ResponseCollectionDTO<>(this.verificationTokenService.findAll()));
-    }
-
     @GetMapping("/{verificationTokenId}")
     public ResponseEntity<VerificationDTO> findById(
             @PathVariable("verificationTokenId")

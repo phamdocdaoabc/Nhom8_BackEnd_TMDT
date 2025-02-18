@@ -19,12 +19,6 @@ public class CredentialController {
 
     private final CredentialService credentialService;
 
-    @GetMapping
-    public ResponseEntity<ResponseCollectionDTO<CredentialDTO>>findAll() {
-        log.info("CredentialController, find all the Credentials");
-        return ResponseEntity.ok(new ResponseCollectionDTO<>(this.credentialService.findAll()));
-    }
-
     @GetMapping("/{credentialId}")
     public ResponseEntity<CredentialDTO> findById(
             @PathVariable("credentialId")

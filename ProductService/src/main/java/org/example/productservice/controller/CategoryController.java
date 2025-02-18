@@ -18,14 +18,6 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @PostMapping
-    public ResponseEntity<CategoryDTO> save(
-            @RequestBody
-            @NotNull(message = "Input must be not null")
-            @Valid CategoryDTO categoryDTO) {
-        return ResponseEntity.ok(this.categoryService.save(categoryDTO));
-    }
-
     @GetMapping
     public ResponseEntity<DTOCollectionResponse<CategoryDTO>> findAll() {
         return ResponseEntity.ok(new DTOCollectionResponse<>(this.categoryService.findAll()));

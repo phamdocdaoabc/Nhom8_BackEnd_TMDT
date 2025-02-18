@@ -24,16 +24,8 @@ import java.util.Map;
 @RequestMapping("/api/users")
 public class UserController {
 
-
     private final UserService userService;
     private final UserRepository userRepository;
-
-
-    @GetMapping("/test")
-    public String test() {
-        return "Service is running";
-    }
-
     @GetMapping
     public ResponseEntity<ResponseCollectionDTO<UserDTO>> findAll() {
         log.info("UserDto List, controller; fetch all users");
