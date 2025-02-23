@@ -31,23 +31,7 @@ public class CategoryController {
         return ResponseEntity.ok(this.categoryService.findById(Integer.parseInt(categoryId)));
     }
 
-    @PutMapping("/{categoryId}") // Corrected the path variable name
-    public ResponseEntity<CategoryDTO> update(
-            @PathVariable("categoryId")
-            @NotNull(message = "Input must be not NULL")
-            @Valid String categoryId,
-            @RequestBody
-            @NotNull(message = "Input must be not null")
-            @Valid CategoryDTO categoryDTO) {
-        return ResponseEntity.ok(this.categoryService.update(Integer.parseInt(categoryId), categoryDTO));
-    }
+//    ...
 
-    @DeleteMapping("/{categoryId}") // Corrected the path variable name
-    public ResponseEntity<Boolean> delete(
-            @PathVariable("categoryId")
-            @NotNull(message = "Input must be not NULL")
-            @Valid String categoryId) {
-        this.categoryService.deleteById(Integer.parseInt(categoryId));
-        return ResponseEntity.ok(true);
-    }
+//    ...
 }
