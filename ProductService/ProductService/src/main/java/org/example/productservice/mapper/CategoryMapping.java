@@ -16,10 +16,22 @@ public interface CategoryMapping {
                 .categoryName(category.getCategoryName())
                 .categoryImageUrl(category.getCategoryImageUrl())
                 .parentCategoryDTO(
-                        CategoryDTO.builder()
-                                .categoryId(parentCategory.getCategoryId())
-                                .categoryName(parentCategory.getCategoryName())
-                                .categoryImageUrl(parentCategory.getCategoryImageUrl())
+//                ...
+                .build();
+    }
+
+    public static Category map(final CategoryDTO categoryDTO) {
+        final var parentCategoryDto = Optional.ofNullable(categoryDTO.getParentCategoryDTO()).orElseGet(() -> new CategoryDTO());
+
+        return Category.builder()
+                .categoryId(categoryDTO.getCategoryId())
+                .categoryName(categoryDTO.getCategoryName())
+                .categoryImageUrl(categoryDTO.getCategoryImageUrl())
+                .parentCategory(
+                        Category.builder()
+                                .categoryId(parentCategoryDto.getCategoryId())
+                                .categoryName(parentCategoryDto.getCategoryName())
+                                .categoryImageUrl(parentCategoryDto.getCategoryImageUrl())
                                 .build())
                 .build();
     }
